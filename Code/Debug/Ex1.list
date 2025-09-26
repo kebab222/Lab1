@@ -37,11 +37,11 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   CONTENTS, READONLY, DEBUGGING, OCTETS
  16 .debug_macro  0001559e  00000000  00000000  000246a0  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 17 .debug_line   000045d4  00000000  00000000  00039c3e  2**0
+ 17 .debug_line   000045d6  00000000  00000000  00039c3e  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 18 .debug_str    00079861  00000000  00000000  0003e212  2**0
+ 18 .debug_str    00079861  00000000  00000000  0003e214  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 19 .comment      00000053  00000000  00000000  000b7a73  2**0
+ 19 .comment      00000053  00000000  00000000  000b7a75  2**0
                   CONTENTS, READONLY
  20 .debug_frame  00000d98  00000000  00000000  000b7ac8  2**2
                   CONTENTS, READONLY, DEBUGGING, OCTETS
@@ -197,11 +197,11 @@ int main(void)
   int visualmin = 55;
  8000202:	2337      	movs	r3, #55	; 0x37
  8000204:	603b      	str	r3, [r7, #0]
-  /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   while (1)
   {
     /* USER CODE END WHILE */
+	  //Start at 02:58:00
 	  clearAllClock();
  8000206:	f7ff ffa1 	bl	800014c <clearAllClock>
 	  if(second < 60) {

@@ -119,6 +119,7 @@ int main(void)
   while (1)
   {
     /* USER CODE END WHILE */
+	  //Start at 02:58:00
 	  clearAllClock();
 	  if(second < 60) {
 		  HAL_GPIO_WritePin(GPIOA, pin[second/5], GPIO_PIN_RESET);
