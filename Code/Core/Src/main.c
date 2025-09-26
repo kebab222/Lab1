@@ -106,8 +106,12 @@ int main(void)
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
   /* USER CODE BEGIN 2 */
+
   clearAllClock();
-  int counter = 0;
+  int hour = 2;
+  int minute = 58;
+  int second = 0;
+  int visualmin = 55;
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -115,12 +119,30 @@ int main(void)
   while (1)
   {
     /* USER CODE END WHILE */
-	  if(counter <= 11) HAL_GPIO_WritePin(GPIOA, pin[counter], GPIO_PIN_RESET);
-	  	  else {
-	  		  break;
-	  	  }
-	  	  counter++;
-	  	  HAL_Delay(1000);
+	  clearAllClock();
+	  if(second < 60) {
+		  HAL_GPIO_WritePin(GPIOA, pin[second/5], GPIO_PIN_RESET);
+	  } else if(second >= 60) {
+		  second = 0;
+		  HAL_GPIO_WritePin(GPIOA, pin[0], GPIO_PIN_RESET);
+		  minute++;
+	  }
+	  if(minute % 5 == 0) {
+		  visualmin = minute;
+	  }
+
+	  if(minute >= 60) {
+		  minute = 0;
+		  HAL_GPIO_WritePin(GPIOA, pin[0], GPIO_PIN_RESET);
+		  hour++;
+	  } else {
+		  HAL_GPIO_WritePin(GPIOA, pin[visualmin/5], GPIO_PIN_RESET);
+	  }
+	  if(hour >= 11) hour = 0;
+	  HAL_GPIO_WritePin(GPIOA, pin[hour], GPIO_PIN_RESET);
+	  second ++;
+	  HAL_Delay(1000);
+	  //HAL_Delay(5); (up video)
     /* USER CODE BEGIN 3 */
   }
   // display 12h30m40s
